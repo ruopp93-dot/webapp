@@ -1,0 +1,399 @@
+:root {
+  color-scheme: dark;
+  --accent: #e50914;
+  --bg: #0b0b0f;
+  --card: #141414;
+  --muted: #9ea1b5;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #f5f5f5;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(229, 9, 20, 0.08), transparent 25%),
+    radial-gradient(circle at 80% 10%, rgba(229, 9, 20, 0.06), transparent 20%),
+    var(--bg);
+  color: var(--text);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 10px 80px;
+}
+
+.tiktok-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 4px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.tiktok-bar .brand {
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.tiktok-tabs {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  padding: 4px 10px;
+  gap: 10px;
+  border: 1px solid var(--border);
+  align-items: center;
+}
+
+.tiktok-tabs .tab {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.tiktok-tabs .tab.active {
+  color: #fff;
+}
+
+.tiktok-tabs .tab.muted {
+  color: var(--muted);
+}
+
+.icon-btn {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-radius: 12px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.icon-btn.ghost {
+  background: transparent;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+
+.status-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.pill.sm {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.pill.ghost {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.feed {
+  flex: 1;
+  display: grid;
+  gap: 16px;
+  overflow-y: auto;
+  padding-bottom: 12px;
+  scroll-snap-type: y mandatory;
+}
+
+.card {
+  position: relative;
+  background: #000;
+  border-radius: 22px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  min-height: calc(100vh - 170px);
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.card-media {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.05);
+}
+
+.card-placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  background: #222;
+}
+
+.card-overlay {
+  position: absolute;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.card-overlay.top {
+  top: 12px;
+  left: 12px;
+}
+
+.card-overlay.bottom {
+  bottom: 12px;
+  left: 12px;
+  right: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.65) 100%);
+  padding: 10px;
+  border-radius: 14px;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.card-desc {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.35;
+  max-height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.avatar.sm {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), #8d0b15);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: #fff;
+}
+
+.username {
+  font-weight: 700;
+}
+
+.tiny {
+  font-size: 12px;
+}
+
+.floating-actions {
+  position: absolute;
+  right: 12px;
+  bottom: 16px;
+  display: grid;
+  gap: 12px;
+  align-items: center;
+  justify-items: center;
+}
+
+.floating-btn {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 20px;
+  display: grid;
+  place-items: center;
+  gap: 2px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.floating-btn .count {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.floating-btn.is-active {
+  background: var(--accent);
+  border-color: transparent;
+  box-shadow: 0 12px 28px rgba(229, 9, 20, 0.35);
+}
+
+.floating-btn.ghost {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sentinel,
+.end {
+  text-align: center;
+  color: var(--muted);
+  padding: 12px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-card {
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 16px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent), #8d0b15);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: #fff;
+  font-size: 18px;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.profile-section {
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 16px;
+  padding: 12px;
+}
+
+.section-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.compact-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.chip {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 8px;
+  align-items: center;
+  padding: 6px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+}
+
+.chip img {
+  width: 48px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.chip-title {
+  font-weight: 700;
+}
+
+.footer {
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.85);
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 6px 10px 10px;
+  z-index: 10;
+  backdrop-filter: blur(6px);
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nav-btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.nav-btn.is-active {
+  color: #fff;
+}
+
+.plus-btn {
+  background: var(--accent);
+  color: #fff;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  justify-self: center;
+  box-shadow: 0 8px 22px rgba(229, 9, 20, 0.35);
+}
+
+@media (min-width: 768px) {
+  .app {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
